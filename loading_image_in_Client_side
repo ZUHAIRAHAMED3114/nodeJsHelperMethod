@@ -1,0 +1,42 @@
+<body>
+	   <div class="form-group">
+            <label for="productimage">Upload Image</label>
+            <input type="file" class="form-control" name="image" id="productimage">
+            <img src="#" id="imgPreview" alt="   ">
+        </div>	
+
+</body>
+
+
+$(function() {
+   document.getElementById('productimage')
+          .addEventListener('change', function() {
+
+            var file = this.files[0];
+            if (file) {
+                if ((file.type == 'image/png') || (file.type == 'image/jpg') || (file.type == 'image/jpeg')) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                       
+                        console.log(e.target.result)
+                        console.log(reader.result)
+                        document.getElementById('imgPreview').setAttribute('src', e.target.result)
+                    }
+
+                    reader.onerror = function(e) {
+                        console.log('an occured while reading a file ')
+                    }
+
+                    reader.readAsDataURL(file)
+                } else {
+
+                    alert('please provide a png or jpeg file ')
+                    return false;
+                }
+
+
+            }
+
+        }, false)
+    //
+})
