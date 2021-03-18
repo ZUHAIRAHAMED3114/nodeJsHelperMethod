@@ -1,0 +1,14 @@
+// path: this variable is to define the path whose parent information is to be selected
+// number : this variable is to used to get the parent strategy 
+let getParentAddress = function(path, number) {
+    // here put the validation for the path and the number through regular expression 
+
+    var colleciton = path.split('\\');
+    var length = colleciton.length - number
+    colleciton = colleciton.slice(0, length);
+
+    var newPath = colleciton.join('\\');
+    return newPath;
+}
+
+getParentAddress(__dirname, 3)
