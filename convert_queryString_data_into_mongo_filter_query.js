@@ -38,7 +38,8 @@ function conversionOperator2(text) {
         let newWord = text.slice(inopreatorIndex + 6, text.indexOf('}', inopreatorIndex) - 1);
         let stringifyArrayOfobject = JSON.stringify(newWord.split(','));
         newtext = text.replace(newWord, stringifyArrayOfobject).replace('"["', '["').replace('"]"', '"]');
-        newtext = newtext.replace(/binb/, '$in');
+        newtext = newtext.replace('in'
+				  , '$in');
         return word;
     })
 
