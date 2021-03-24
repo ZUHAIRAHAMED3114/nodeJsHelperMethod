@@ -29,4 +29,21 @@ function conversionOperator(json) {
     return newtext
 }
 
+// we are sending the text as json.Stringigy(jsonobject)
+function conversionOperator2(text) {
+
+    var newtext = text;
+    text.replace(/"in"/g, word => {
+        let inopreatorIndex = text.indexOf(word);
+        let newWord = text.slice(inopreatorIndex + 6, text.indexOf('}', inopreatorIndex) - 1);
+        let stringifyArrayOfobject = JSON.stringify(newWord.split(','));
+        newtext = text.replace(newWord, stringifyArrayOfobject).replace('"["', '["').replace('"]"', '"]');
+        newtext = newtext.replace(/binb/, '$in');
+        return word;
+    })
+
+
+    return newtext
+}
+
 console.log(conversionOperator(careers));
